@@ -1,0 +1,23 @@
+-- 例文マスタ
+CREATE TABLE sentences (
+    no INT  PRIMARY KEY  --番号
+  , en TEXT              --英文
+  , ja TEXT              --和訳
+);
+
+-- 成績テーブル
+CREATE TABLE scores (
+    id        TEXT PRIMARY KEY  --ID
+  , date      DATETIME          --日付
+  , answered  INT               --解答数
+  , corrected INT               --正答数
+);
+
+-- 問題テーブル
+CREATE TABLE problems (
+    score_id    TEXT --成績ID
+  , sentence_no INT  --例文番号
+  , seq         INT  --出題順序
+  , result      INT  --0:誤り/1:正解
+  , answer      TEXT --解答文章
+);

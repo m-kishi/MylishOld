@@ -1,0 +1,50 @@
+<template>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>問題</h4>
+            </div>
+        </div>
+        <div v-if="loaded">
+            <div class="row">
+                <div class="col s12">
+                    <span class="flow-text">No.{{ counter }}</span>
+                </div>
+                <div class="col s10 offset-s1">
+                    <span class="flow-text">{{ sentence.Ja }}</span>
+                </div>
+            </div>
+            <div class="row  valign-wrapper">
+                <div class="col s1">
+                    <i class="material-icons" v-if="result == 1">radio_button_unchecked</i>
+                    <i class="material-icons" v-if="result == -1">clear</i>
+                </div>
+                <div class="col s11">
+                    <input v-model="answer" ref="input_answer" v-on:keyup.enter="submit" v-if="result == 0">
+                    <span class="flow-text" v-if="result != 0">{{ answer }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s1"> </div>
+                <div class="col s11" v-if="result != 0">
+                    <span class="flow-text">{{ sentence.En }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s5 offset-s1 left-align">
+                    <button class="btn-large left-align" v-if="result != 0" @click="exit">終了</button>
+                </div>
+                <div class="col s5 right-align">
+                    <button class="btn-large" v-if="result == 0" @click="submit">OK</button>
+                    <button class="btn-large" v-if="result != 0" @click="next" ref="btn_next">次へ</button>
+                </div>
+            </div>
+        </div>
+        <div v-else class="row">
+            <div class="col s12 center-align">
+                <img src="images/ajax_loader.gif" alt="logding" />
+            </div>
+        </div>
+    </div>
+</template>
+<script src="./quest.ts"></script>

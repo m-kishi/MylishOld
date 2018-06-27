@@ -1,0 +1,46 @@
+<template>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>結果</h4>
+            </div>
+        </div>
+        <div v-if="loaded" class="row">
+            <div class="col s12 right-align">
+                <span class="flow-text">{{ score.Corrected }} / {{ score.Answered }} {{ rate }}&#37;</span>
+            </div>
+            <div class="col s12">
+                <ul v-for="item in results" class="collection">
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s2">
+                                <span class="flow-text">No.{{ item.Seq }}</span>
+                            </div>
+                            <div class="col s10">
+                                <span class="flow-text">{{ item.Sentence }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s2">
+                                <i v-if="item.Result == 1" class="material-icons">radio_button_unchecked</i>
+                                <i v-if="item.Result == 0" class="material-icons">clear</i>
+                            </div>
+                            <div class="col s10">
+                                <span class="flow-text">{{ item.Answer }}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s12 right-align">
+                <router-link class="btn-large" to="/">戻る</router-link>
+            </div>
+        </div>
+        <div v-else class="row">
+            <div class="col s12 center-align">
+                <img src="images/ajax_loader.gif" alt="logding" />
+            </div>
+        </div>
+    </div>
+</template>
+<script src="./score.ts"></script>

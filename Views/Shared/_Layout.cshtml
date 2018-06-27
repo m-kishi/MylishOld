@@ -3,18 +3,40 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mylish</title>
+    <title>Mylish</title>
     <base href="~/" />
 
+    <!--
     <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+    -->
+
+    <!-- ==================================================
+    CSSに記述しても適用までに一瞬元カラー(赤)が映ってしまうためここに記述
+    =================================================== -->
+    <style>
+        .page-footer {
+            background-color: #26a69a !important;
+        }
+    </style>
+    <link rel="stylesheet" href="~/dist/materialize.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/iconfont/material-icons.css">
     <environment exclude="Development">
         <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    @RenderBody()
-
+    <main>
+        @RenderBody()
+    </main>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2018 m-kishi All Rights Reserved.
+            </div>
+        </div>
+    </footer>
     <script src="~/dist/vendor.js" asp-append-version="true"></script>
+    <script src="~/dist/materialize.min.js" asp-append-version="true"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
